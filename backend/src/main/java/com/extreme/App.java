@@ -38,6 +38,10 @@ public class App {
         // 一个纯粹的 ping 接口，测试框架最高性能
         router.get("/api/ping").handler(ctx -> ctx.response().end("pong"));
         
+        router.get("/api/level1").handler(UserHandler::level1Json);
+        router.get("/api/level2").handler(UserHandler::level2Auth);
+        router.get("/api/level3").handler(UserHandler::level3IO);
+
         // 一个接收数据的接口，压测写性能
         router.post("/api/track").handler(UserHandler::trackEvent);
 

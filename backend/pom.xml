@@ -45,6 +45,13 @@
             <version>${vertx.version}</version>
         </dependency>
 
+        <!-- Vert.x Circuit Breaker: 熔断器，防止慢 SQL 拖垮整个系统 -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-circuit-breaker</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+
         <!-- DSL-JSON：Java 宇宙最快 JSON 解析库 -->
         <dependency>
             <groupId>com.dslplatform</groupId>
@@ -80,6 +87,13 @@
                         <!-- 使用 JDK 的增强功能 -->
                         <arg>-parameters</arg>
                     </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>com.dslplatform</groupId>
+                            <artifactId>dsl-json-java8</artifactId>
+                            <version>1.10.0</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 

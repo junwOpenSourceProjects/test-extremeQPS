@@ -1,8 +1,13 @@
 com/extreme/DisruptorManager$LogEvent.class
 com/extreme/DisruptorManager.class
+com/extreme/_UserHandler$UserDTO_DslJsonConverter.class
+com/extreme/UserHandler$UserDTO.class
+com/extreme/AeronIpcServer.class
+com/extreme/_UserHandler$ComplexDTO_DslJsonConverter$ObjectFormatConverter.class
 com/extreme/App.class
 com/extreme/DbManager.class
 com/extreme/DisruptorManager$LogEventHandler.class
-com/extreme/UserHandler$UserDTO.class
+com/extreme/UserHandler$ComplexDTO.class
+com/extreme/_UserHandler$ComplexDTO_DslJsonConverter.class
+com/extreme/_UserHandler$UserDTO_DslJsonConverter$ObjectFormatConverter.class
 com/extreme/UserHandler.class
-com/extreme/AeronIpcServer.class

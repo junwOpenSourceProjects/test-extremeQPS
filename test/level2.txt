@@ -1,0 +1,8 @@
+Running 3m test @ http://127.0.0.1:8080/api/level2
+  8 threads and 500 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.98ms    2.68ms  87.43ms   97.90%
+    Req/Sec    22.56k     3.41k   47.62k    77.64%
+  32311010 requests in 3.00m, 8.09GB read
+Requests/sec: 179445.45
+Transfer/sec:     46.03MB
