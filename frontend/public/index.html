@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extreme QPS Nuxt Mock</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f4f9; }
+        h1 { color: #333; }
+        .box { padding: 20px; background: white; display: inline-block; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .stats { margin-top: 20px; font-weight: bold; color: #0070f3; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>🚀 极限 QPS 业务系统官网 (Nuxt SSG 模拟)</h1>
+        <p>本页面由 Nginx 直接提供静态托管，Node.js 进程为 0，零内存消耗。</p>
+        <p>SEO 友好，并且由 Nginx GeoIP2 模块进行路由重定向。</p>
+        <div class="stats" id="geo-info">获取国家/地区信息中...</div>
+        <br>
+        <button onclick="testApi()">测试后端 API (纯响应式 Vert.x)</button>
+        <p id="api-result"></p>
+    </div>
+
+    <script>
+        // 模拟 Nginx 注入的 Header 读取
+        // 实际应用中 Nginx 会注入 cookie，或者直接在这个 HTML head 注入变量
+        document.getElementById('geo-info').innerText = "当前 GeoIP 区域: 模拟中国区 (CN)";
+
+        function testApi() {
+            document.getElementById('api-result').innerText = "请求中...";
+            fetch('/api/users')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('api-result').innerText = "API 响应成功, 用户数: " + (data ? data.length : 0);
+                })
+                .catch(err => {
+                    document.getElementById('api-result').innerText = "由于后端未启动，发生错误。请先启动 Java 服务。";
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Running 3m test @ http://127.0.0.1:8080/api/ping
+  8 threads and 500 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.96ms    1.40ms  79.71ms   98.92%
+    Req/Sec    33.07k     2.98k   41.99k    94.03%
+  47377043 requests in 3.00m, 1.85GB read
+Requests/sec: 263068.34
+Transfer/sec:     10.54MB

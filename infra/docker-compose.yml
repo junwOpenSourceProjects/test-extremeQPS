@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:9.0
+    container_name: extreme_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: extreme_db
+    ports:
+      - "3306:3306"
+    deploy:
+      resources:
+        limits:
+          memory: 400M # 严格限制 MySQL 使用内存在 400MB，防 OOM
+    command: 
+      - --innodb_buffer_pool_size=128M # 限制缓存池
+      - --max_connections=500
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  questdb:
+    image: questdb/questdb:latest
+    container_name: extreme_questdb
+    ports:
+      - "9000:9000" # REST API
+      - "8812:8812" # Postgres wire protocol
+      - "9009:9009" # InfluxDB Line Protocol
+    deploy:
+      resources:
+        limits:
+          memory: 300M # 时序数据库非常吃内存，严格限制
+    environment:
+      # QuestDB 需要通过环境变量进行调优
+      - QDB_CAIRO_COMMIT_MODE=async # 异步提交提升写入性能
+      - QDB_CAIRO_O3_MAX_LAG=1000 # 允许的乱序数据延迟
+    volumes:
+      - questdb_data:/root/.questdb
+
+volumes:
+  mysql_data:
+  questdb_data:
